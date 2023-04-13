@@ -1,8 +1,8 @@
 package kz.spring.quiz_app.services;
 
-import com.tannur.SpringSecurityNew.models.Person;
-import com.tannur.SpringSecurityNew.repositories.PeopleRepository;
-import com.tannur.SpringSecurityNew.security.PersonDetails;
+import kz.spring.quiz_app.model.User;
+import kz.spring.quiz_app.repositories.UsersRepository;
+import kz.spring.quiz_app.security.UsersDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,22 +12,22 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class PersonDetailsService implements UserDetailsService {
+public class UsersDetailsService implements UserDetailsService {
 
-    private final PeopleRepository peopleRepository;
+    private final UsersRepository usersRepository;
 
     @Autowired
-    public PersonDetailsService(PeopleRepository peopleRepository) {
-        this.peopleRepository = peopleRepository;
+    public UsersDetailsService(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<Person> person = peopleRepository.findByUsername(s);
+        Optional<User> user = usersRepository.findByUsername(s);
 
-        if (person.isEmpty())
+        if (user.isEmpty())
             throw new UsernameNotFoundException("User not found");
 
-        return new PersonDetails(person.get());
+        return new UsersDetails(user.get());
     }
 }

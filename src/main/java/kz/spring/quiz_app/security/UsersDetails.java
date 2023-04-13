@@ -1,33 +1,33 @@
 package kz.spring.quiz_app.security;
 
-import com.tannur.SpringSecurityNew.models.Person;
+import kz.spring.quiz_app.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
 
-public class PersonDetails implements UserDetails {
-    private final Person person;
+public class UsersDetails implements org.springframework.security.core.userdetails.UserDetails {
 
-    public PersonDetails(Person person) {
-        this.person = person;
+    private final User user;
+
+    public UsersDetails(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(person.getRole()));
+        return Collections.singletonList(new SimpleGrantedAuthority(user.getRole()));
     }
 
     @Override
     public String getPassword() {
-        return this.person.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.person.getUsername();
+        return this.user.getUsername();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class PersonDetails implements UserDetails {
     }
 
     // Нужно, чтобы получать данные аутентифицированного пользователя
-    public Person getPerson() {
-        return this.person;
+    public User getUser() {
+        return this.user;
     }
 }

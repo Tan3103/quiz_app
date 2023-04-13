@@ -1,7 +1,7 @@
 package kz.spring.quiz_app.services;
 
-import com.tannur.SpringSecurityNew.models.Person;
-import com.tannur.SpringSecurityNew.repositories.PeopleRepository;
+import kz.spring.quiz_app.model.User;
+import kz.spring.quiz_app.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,19 +9,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RegistrationService {
-    private final PeopleRepository peopleRepository;
+    private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegistrationService(PeopleRepository peopleRepository, PasswordEncoder passwordEncoder) {
-        this.peopleRepository = peopleRepository;
+    public RegistrationService(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
+        this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
-    public void register(Person person){
-        person.setPassword(passwordEncoder.encode(person.getPassword()));
-        person.setRole("ROLE_USER");
-        peopleRepository.save(person);
+    public void register(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("ROLE_USER");
+        usersRepository.save(user);
     }
 }
