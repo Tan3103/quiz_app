@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/admin/update/{id}(id=${user.getId()})}" th:object="${user}">
+        <label for="firstname">Enter firstname: </label>
+        <input type="text" th:field="*{firstname}" id="firstname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">firstname Error</div>
+
+        <br/>
+
+        <label for="lastname">Enter lastname: </label>
+        <input type="text" th:field="*{lastname}" id="lastname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">lastname Error</div>
+
+        <br/>
+
+        <label for="username">Enter username: </label>
+        <input type="text" th:field="*{username}" id="username"/>
+        <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username Error</div>
+
+        <br/>
+
+<!--        <label for="role">Role</label>-->
+<!--        <select class="form-select" th:object="${nullPerson}" th:field="*{id}" id="role">-->
+<!--            <option th:each="us: ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>-->
+<!--        </select>-->
+
+        <label for="role">Enter username: </label>
+        <input type="text" th:field="*{role}" id="role"/>
+        <div style="color:red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">role Error</div>
+
+        <input type="submit" value="Update!"/>
+    </form>
+</body>
+</html>

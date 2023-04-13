@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorizer) -> authorizer
                         .requestMatchers("/admin", "/score").hasRole("ADMIN")
                         .requestMatchers("/auth/login", "/auth/registration", "/error").permitAll()
-                        .anyRequest().hasAnyRole("ADMIN", "USER")
+                        .anyRequest().hasAnyRole("ADMIN", "USER", "TEACHER")
                 )
                 .formLogin(form -> form
                     .loginPage("/auth/login")
