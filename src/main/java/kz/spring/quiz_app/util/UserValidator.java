@@ -9,11 +9,11 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component
-public class PersonValidator implements Validator {
+public class UserValidator implements Validator {
     private final UsersDetailsService usersDetailsService;
 
     @Autowired
-    public PersonValidator(UsersDetailsService usersDetailsService) {
+    public UserValidator(UsersDetailsService usersDetailsService) {
         this.usersDetailsService = usersDetailsService;
     }
 
