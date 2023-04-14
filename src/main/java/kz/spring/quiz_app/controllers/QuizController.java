@@ -43,7 +43,7 @@ public class QuizController {
     @PostMapping(value = "/ss")
     public String postquiz(@ModelAttribute Quiz quiz){
 
-        System.out.println(quiz.getQuestionsList().get(1).getChose());
+        System.out.println(quiz);
 
         return "redirect:/";
     }

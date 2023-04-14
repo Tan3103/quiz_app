@@ -16,15 +16,15 @@
 
                         <div th:each="option, i :${vopros.options}">
                             <input th:name = "'questionsList[' + ${count.index} + '].chose'" th:value="${i.index}" type="radio" >
-                            <label th:name = "'option[' + ${i.index} + '].optionText'" th:text="${option.getOptionText()}" th:value="${option.optionText}"></label>
+                            <label th:text="${option.getOptionText()}"></label>
                         </div>
 
-<!--                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].questionId'" th:value="${vopros.questionId}" />-->
-<!--                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].questionTitle'" th:value="${vopros.questionTitle}" />-->
-<!--                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].optionCorrect'" th:value="${vopros.optionCorrect}" />-->
+                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].questionId'" th:value="${vopros.questionId}" />
+                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].questionTitle'" th:value="${vopros.questionTitle}" />
+                        <input type="hidden" th:name="'questionsList[' + ${count.index} + '].optionCorrect'" th:value="${vopros.optionCorrect}" />
                     </div>
-<!--                    <input type="hidden" th:name="subject" th:value="${quiz.subject}" />-->
-<!--                    <input type="hidden" th:name="id" th:value="${quiz.id}" />-->
+                    <input type="hidden" th:name="subject" th:value="${quiz.subject}" />
+                    <input type="hidden" th:name="id" th:value="${quiz.id}"/>
 
                     <button type="submit" class="btn btn-danger d-block my-4">Submit Answer</button>
                 </form>
