@@ -10,7 +10,7 @@
     <div class="container">
         <div class = "card">
             <div class="card-body">
-                <form action="/ss" method="POST" th:object="${quiz}">
+                <form action="/submit" method="POST" th:object="${quiz}">
                     <div th:each="vopros, count: ${quiz.questionsList}">
                         <label th:text="${vopros.getQuestionTitle()}"></label>
 

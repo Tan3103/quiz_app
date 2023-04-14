@@ -1,5 +1,4 @@
 package kz.spring.quiz_app.controllers;
-import kz.spring.quiz_app.model.Questions;
 import kz.spring.quiz_app.model.Quiz;
 import kz.spring.quiz_app.services.OptionService;
 import kz.spring.quiz_app.services.QuestionService;
@@ -8,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class QuizController {
@@ -27,21 +24,14 @@ public class QuizController {
 
     @GetMapping(value = "/questions/{idshka}")
     public String quiz(Model model, @PathVariable(name = "idshka") Long id){
-
         Quiz quiz = quizService.getQuizById(id);
         model.addAttribute("quiz", quiz);
 
-//        List<Questions> questionsList = questionService.getQuestionsByQuiz(quizList);
-//        List<Options> optionsList = optionService.findById(optId);
-//        model.addAttribute("voprosy", questionsList);
-//        model.addAttribute("otvety", optionsList);
-
-        return "questions";
+        return "student/questions";
     }
 
-
-    @PostMapping(value = "/ss")
-    public String postquiz(@ModelAttribute Quiz quiz){
+    @PostMapping(value = "/submit")
+    public String postQuiz(@ModelAttribute Quiz quiz){
 
         System.out.println(quiz);
 

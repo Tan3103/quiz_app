@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,5 +41,8 @@ public class User {
 
     @Column(name = "user_role")
     private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Session> sessions;
 }
 

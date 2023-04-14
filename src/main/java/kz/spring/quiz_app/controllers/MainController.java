@@ -1,7 +1,7 @@
 package kz.spring.quiz_app.controllers;
 
 import kz.spring.quiz_app.model.User;
-import kz.spring.quiz_app.repositories.UsersRepository;
+import kz.spring.quiz_app.services.QuizService;
 import kz.spring.quiz_app.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,10 +17,12 @@ import java.util.Optional;
 public class MainController {
 
     private final UsersService usersService;
+    private final QuizService quizService;
 
     @Autowired
-    public MainController(UsersService usersService) {
+    public MainController(UsersService usersService, QuizService quizService) {
         this.usersService = usersService;
+        this.quizService = quizService;
     }
 
     @GetMapping("/")
@@ -38,14 +40,15 @@ public class MainController {
         }
         else if (person.get().getRole().equals("ROLE_TEACHER")) {
 
-            return "teacher.html";
+            return "teacher/teacher.html";
         }
         else if (person.get().getRole().equals("ROLE_USER")) {
+            m.addAttribute("allQuiz", quizService.getAllQuiz());
 
-            return "index.html";
+            return "student/index.html";
         }
         else {
-            return "index.html";
+            return "student/index.html";
         }
     }
 }
