@@ -10,27 +10,18 @@
     <div class="container">
         <div class = "card">
             <div class="card-body">
-                <form method="post" action="submit" th:object="${quiz}">
+                <form action="submit" method="POST" th:object="${quiz}">
+                    <div th:each="vopros, count: ${quiz.getQuestionsList()}">
+                        <label th:text="${vopros.getQuestionTitle()}"></label>
 
-                    <fieldset th:each="vopros, count: ${voprosy}">
-                        <label> <strong th:text="${vopros.getQuestionTitle()}"></strong> </label>
-
-                            <div class = "form-check" th:each="option, i :${vopros.getOptions()}">
-                                <input  class="form-check-input"
-                                        th:name = "'questions[' + ${count.index} + '].chose'"
-                                        th:value="${option.getOptionText()}"
-                                        type="radio"
-                                        th:field=""
-                                >
-                                <label
-                                        class="form-check-label"
-                                        th:text="${option.getOptionText()}"></label>
-                            </div>
-                    </fieldset>
+<!--                        <div th:each="option, i :${vopros.getOptions()}">-->
+<!--                            <input th:name = "'questionsList[' + ${count.index} + '].chose'" th:value="${i.index}" type="radio" >-->
+<!--                            <label th:text="${option.getOptionText()}"></label>-->
+<!--                        </div>-->
+                    </div>
                 </form>
             </div>
-
         </div>
     </div>
 </body>
-</html>`
+</html>

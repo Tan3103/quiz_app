@@ -26,7 +26,7 @@ public class Questions {
     @OneToMany(mappedBy = "questions")
     private List<Options> options;
 
-    @Column(name="chose", columnDefinition = "-1")
+    @Column(name="chose")
     private int chose;
 
     @Column(name = "option_correct")

@@ -5,13 +5,16 @@ import kz.spring.quiz_app.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class QuizService {
+    private final QuizRepository quizRepository;
+
     @Autowired
-    private QuizRepository quizRepository;
+    public QuizService(QuizRepository quizRepository) {
+        this.quizRepository = quizRepository;
+    }
 
     public Quiz getQuizById(Long id){
         Optional<Quiz> quiz = quizRepository.findById(id);
