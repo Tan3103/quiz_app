@@ -33,7 +33,7 @@ public class QuizController {
     @PostMapping(value = "/submit")
     public String postQuiz(@ModelAttribute Quiz quiz){
 
-        System.out.println(quiz);
+
 
         return "redirect:/";
     }
