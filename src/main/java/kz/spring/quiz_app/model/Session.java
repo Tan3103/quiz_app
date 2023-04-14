@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,4 +29,21 @@ public class Session {
 
     @Column(name = "score")
     private int score;
+
+    @Column(name = "start_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startAt;
+
+
+    @Column(name = "end_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endAt;
+
+    public Session(User user, Quiz quiz, int score, Date startAt, Date endAt) {
+        this.user = user;
+        this.quiz = quiz;
+        this.score = score;
+        this.startAt = startAt;
+        this.endAt = endAt;
+    }
 }

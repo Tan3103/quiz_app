@@ -30,7 +30,7 @@ public class Questions {
     private int chose;
 
     @Column(name = "option_correct")
-    private String optionCorrect;
+    private int optionCorrect;
 
     @ManyToOne()
     @JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id" )
