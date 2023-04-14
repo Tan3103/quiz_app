@@ -40,11 +40,11 @@ public class QuizController {
     }
 
 
-//    @PostMapping(value = "/questions/{idshka}")
-//    public String postquiz(@RequestParam(name = "item_name", defaultValue = "No Item") String name){
-//
-//
-//
-//        return "";
-//    }
+    @PostMapping(value = "/ss")
+    public String postquiz(@ModelAttribute Quiz quiz){
+
+        System.out.println(quiz.getQuestionsList().get(1).getChose());
+
+        return "redirect:/";
+    }
 }

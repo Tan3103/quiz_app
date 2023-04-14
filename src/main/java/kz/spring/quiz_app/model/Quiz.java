@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "quiz")
 public class Quiz {
@@ -50,5 +49,14 @@ public class Quiz {
     }
 
     public Quiz() {
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", subject='" + subject + '\'' +
+                ", questionsList=" + questionsList +
+                '}';
     }
 }
