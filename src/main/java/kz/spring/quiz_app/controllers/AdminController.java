@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -23,6 +26,14 @@ public class AdminController {
     @GetMapping("/update/{id}")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", usersService.findOne(id));
+
+        List<String> roles = new ArrayList<>();
+        roles.add("ROLE_USER");
+        roles.add("ROLE_ADMIN");
+        roles.add("ROLE_TEACHER");
+
+        model.addAttribute("roles", roles);
+
         return "admin/update";
     }
 

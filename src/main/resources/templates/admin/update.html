@@ -24,14 +24,12 @@
 
         <br/>
 
-<!--        <label for="role">Role</label>-->
-<!--        <select class="form-select" th:object="${nullPerson}" th:field="*{id}" id="role">-->
-<!--            <option th:each="us: ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>-->
-<!--        </select>-->
+        <input type="hidden" th:field="*{password}"/>
 
-        <label for="role">Enter username: </label>
-        <input type="text" th:field="*{role}" id="role"/>
-        <div style="color:red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">role Error</div>
+        <label for="role">Choose the person</label>
+        <select th:field="*{role}" id="role">
+            <option th:each="rl: ${roles}" th:value="${rl}" th:text="${rl}"></option>
+        </select>
 
         <input type="submit" value="Update!"/>
     </form>
