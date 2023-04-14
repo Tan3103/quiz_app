@@ -28,9 +28,7 @@ public class QuizController {
     @GetMapping(value = "/questions/{idshka}")
     public String quiz(Model model, @PathVariable(name = "idshka") Long id){
 
-        System.out.println(id);
         Quiz quiz = quizService.getQuizById(id);
-        System.out.println(quiz);
         model.addAttribute("quiz", quiz);
 
 //        List<Questions> questionsList = questionService.getQuestionsByQuiz(quizList);
