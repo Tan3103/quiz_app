@@ -18,7 +18,7 @@ public class Quiz {
     @Id
     @Column(name = "quiz_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quizId;
+    private Long id;
 
 
     @Column(name = "subject")
