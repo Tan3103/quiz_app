@@ -41,11 +41,14 @@ public class TeacherController {
 
     @PatchMapping("/update/{id}")
     public String update(@ModelAttribute("question") @Valid Questions question, BindingResult bindingResult,
-                         @ModelAttribute("options") @Valid Options options,
                          @PathVariable("id") Long id) {
 
 //        if (bindingResult.hasErrors())
 //            return "people/edit";
+
+        for (Options option: question.getOptions()) {
+            optionService.update(option.getOptionId(), option);
+        }
 
         questionService.update(id, question);
         return "redirect:/";

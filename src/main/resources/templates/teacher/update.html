@@ -13,12 +13,12 @@
 
             <br/>
 
-<!--            <div th:each="option, optionIndex: ${question.options}">-->
-<!--                <label >Enter optionText:</label>-->
-<!--                <input type="text" th:field="*{options[__${optionIndex.index}__].optionText}" />-->
-<!--                <input type="hidden" th:field="*{options[__${optionIndex.index}__].optionId}" />-->
-<!--                <input type="hidden" th:field="*{options[__${optionIndex.index}__].questions.questionId}" />-->
-<!--            </div>-->
+            <div th:each="option, optionIndex: ${question.options}">
+                <label >Enter optionText:</label>
+                <input type="text" th:field="*{options[__${optionIndex.index}__].optionText}" />
+                <input type="hidden" th:field="*{options[__${optionIndex.index}__].optionId}" />
+                <input type="hidden" th:field="*{options[__${optionIndex.index}__].questions.questionId}" />
+            </div>
 
             <br/>
 
