@@ -7,7 +7,8 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="container">
+<div th:insert="nav.html :: nav"></div>
+    <div class="container mt-5">
         <div class = "card">
             <div class="card-body">
                 <form action="/submit" method="POST" th:object="${quiz}">
@@ -26,7 +27,8 @@
                     <input type="hidden" th:name="subject" th:value="${quiz.subject}" />
                     <input type="hidden" th:name="id" th:value="${quiz.id}"/>
 
-                    <button type="submit" class="btn btn-danger d-block my-4">Submit Answer</button>
+
+                    <button type="submit" class="btn btn-danger d-block my-4 center">Submit Answer</button>
                 </form>
             </div>
         </div>

@@ -7,19 +7,27 @@
         <title>Main</title>
     </head>
     <body>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-8 offset-2">
-                    <h1 class="text-center">Quiz</h1>
 
+        <div th:insert="nav.html :: nav"></div>
+        <div class="container">
+            <h1 class="text-center lead mt-5">QUIZ</h1>
+            <div class="row mt-5 gy-5">
+                <div class="col-4 offset-4">
                     <div th:each="quiz: ${allQuiz}">
-                        <a th:href="@{'/questions/' + ${quiz.id}}" th:text="${quiz.subject}"></a>
+                        <div class="row gy-10">
+                            <div class="p-3 border bg-light">
+                                <DIV class="d-flex justify-content-center">
+                                    <h2 class="card-title lead" th:text="${quiz.subject}"></h2>
+                                </DIV>
+                                <DIV class="d-flex justify-content-center">
+                                    <a th:href="@{'/questions/' + ${quiz.id}}"  class="btn btn-primary" >Start</a>
+                                </DIV>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </body>
 </html>

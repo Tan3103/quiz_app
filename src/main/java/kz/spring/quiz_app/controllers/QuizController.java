@@ -43,7 +43,7 @@ public class QuizController {
     }
 
     @PostMapping(value = "/submit")
-    public String postQuiz(@ModelAttribute Quiz quiz){
+    public String postQuiz(Model model,@ModelAttribute Quiz quiz){
 
         Date end = new Date();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -54,7 +54,9 @@ public class QuizController {
 
         Session session = new Session(user, quiz, score, start, end);
         sessionService.saveSession(session);
-
-        return "redirect:/";
+        model.addAttribute("result", session);
+        model.addAttribute("cviz", quiz);
+        return "student/result";
     }
+
 }
