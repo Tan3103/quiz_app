@@ -20,7 +20,6 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "subject")
     private String subject;
 
@@ -29,4 +28,5 @@ public class Quiz {
 
     @OneToMany(mappedBy = "quiz")
     private List<Session> sessions;
+
 }
