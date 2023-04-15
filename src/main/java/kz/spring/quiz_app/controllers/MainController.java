@@ -1,6 +1,7 @@
 package kz.spring.quiz_app.controllers;
 
 import kz.spring.quiz_app.model.User;
+import kz.spring.quiz_app.services.QuestionService;
 import kz.spring.quiz_app.services.QuizService;
 import kz.spring.quiz_app.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,13 @@ public class MainController {
 
     private final UsersService usersService;
     private final QuizService quizService;
+    private final QuestionService questionService;
 
     @Autowired
-    public MainController(UsersService usersService, QuizService quizService) {
+    public MainController(UsersService usersService, QuizService quizService, QuestionService questionService) {
         this.usersService = usersService;
         this.quizService = quizService;
+        this.questionService = questionService;
     }
 
     @GetMapping("/")
@@ -39,6 +42,7 @@ public class MainController {
             return "admin/adminPage.html";
         }
         else if (person.get().getRole().equals("ROLE_TEACHER")) {
+            m.addAttribute("allQuestions", questionService.getAllQuestions());
 
             return "teacher/teacher.html";
         }

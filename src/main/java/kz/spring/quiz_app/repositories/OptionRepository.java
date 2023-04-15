@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 @Transactional
 public interface OptionRepository extends JpaRepository<Options, Long> {
-    List<Options> findByQuestions(Long id);
+    List<Options> findByQuestionsQuestionId(Long id);
 }

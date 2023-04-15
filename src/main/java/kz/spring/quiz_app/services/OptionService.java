@@ -9,10 +9,14 @@ import java.util.List;
 
 @Service
 public class OptionService {
+    private final OptionRepository optionRepository;
 
     @Autowired
-    private OptionRepository optionRepository;
-    public List<Options> findById(Long id){
-        return optionRepository.findByQuestions(id);
+    public OptionService(OptionRepository optionRepository) {
+        this.optionRepository = optionRepository;
+    }
+
+    public List<Options> findByQuestionId(Long id){
+        return optionRepository.findByQuestionsQuestionId(id);
     }
 }
