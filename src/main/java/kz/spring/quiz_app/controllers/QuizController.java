@@ -59,4 +59,14 @@ public class QuizController {
         return "student/result";
     }
 
+    @GetMapping(value = "/sessions")
+    public String sessions(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        User user = usersService.getByUsername(currentPrincipalName);
+        model.addAttribute("mySessions", sessionService.findByUserId(user.getId()));
+
+        return "student/sessions";
+    }
 }

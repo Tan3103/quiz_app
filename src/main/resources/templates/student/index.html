@@ -7,10 +7,10 @@
         <title>Main</title>
     </head>
     <body>
+        <div th:insert="student/navbarUser.html :: navbar"></div>
 
-        <div th:insert="nav.html :: nav"></div>
         <div class="container">
-            <h1 class="text-center lead mt-5">QUIZ</h1>
+                <h1 class="text-center lead mt-5">QUIZ</h1>
             <div class="row mt-5 gy-5">
                 <div class="col-4 offset-4">
                     <div th:each="quiz: ${allQuiz}">
@@ -23,7 +23,6 @@
                                     <a th:href="@{'/questions/' + ${quiz.id}}"  class="btn btn-primary" >Start</a>
                                 </DIV>
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class SessionService {
     private final SessionRepository sessionRepository;
@@ -32,5 +34,9 @@ public class SessionService {
             }
         }
         return correct;
+    }
+
+    public List<Session> findByUserId(int id){
+        return sessionRepository.findByUserId(id);
     }
 }
