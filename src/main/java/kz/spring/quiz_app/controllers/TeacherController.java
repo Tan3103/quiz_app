@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
@@ -34,7 +32,6 @@ public class TeacherController {
     @GetMapping("/update/{id}")
     public String edit(Model model, @PathVariable("id") Long id) {
         model.addAttribute("question", questionService.findOne(id));
-        model.addAttribute("options", optionService.findByQuestionId(id));
 
         return "teacher/update";
     }
