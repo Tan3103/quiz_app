@@ -29,4 +29,8 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz")
     private List<Session> sessions;
 
+    public Quiz(Long id, String subject) {
+        this.id = id;
+        this.subject = subject;
+    }
 }

@@ -17,6 +17,9 @@ public class OptionService {
         this.optionRepository = optionRepository;
     }
 
+    public Options addOption(Options option){
+        return optionRepository.save(option);
+    }
     public List<Options> findByQuestionId(Long id){
         return optionRepository.findByQuestionsQuestionId(id);
     }

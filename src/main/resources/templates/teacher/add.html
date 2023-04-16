@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Hello</h1>
+<form th:method="POST" th:action="@{/teacher/addquiz}">
+    <label for="subject">Enter subject: </label>
+    <input type="text" name = "name_subject" id="subject"/>
+    <label for="title">Enter Question Title: </label>
+    <input type="text" name = "name_title" id="title"/>
+    <label for ="option1"> Option1:</label>
+    <input type="text" name = "name_options1" id="option1"/>
+    <label for ="option2"> Option2:</label>
+    <input type="text" name = "name_options2" id="option2"/>
+    <label for ="option3"> Option3:</label>
+    <input type="text" name = "name_options3" id="option3"/>
+    <label for ="option4"> Option4:</label>
+    <input type="text" name = "name_options4" id="option4"/>
+    <label for ="correct"> Correct:</label>
+    <input type="text" name = "correct_options" id="correct"/>
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+</body>
+</html>

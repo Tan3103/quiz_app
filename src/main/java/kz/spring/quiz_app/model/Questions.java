@@ -20,6 +20,13 @@ public class Questions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
+    public Questions(String questionTitle, int chose, int optionCorrect, Quiz quiz) {
+        this.questionTitle = questionTitle;
+        this.chose = chose;
+        this.optionCorrect = optionCorrect;
+        this.quiz = quiz;
+    }
+
     @Column(name = "question_title")
     private String questionTitle;
 

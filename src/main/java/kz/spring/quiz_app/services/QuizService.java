@@ -22,6 +22,10 @@ public class QuizService {
         return quiz.orElse(null);
     }
 
+    public Quiz addQuiz(Quiz quiz){
+        return quizRepository.save(quiz);
+    }
+
     public List<Quiz> getAllQuiz(){
         return quizRepository.findAll();
     }

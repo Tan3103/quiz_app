@@ -29,6 +29,10 @@ public class QuestionService {
         return foundQuestion.orElse(null);
     }
 
+    public Questions addQuestion(Questions question){
+        return questiosnRepository.save(question);
+    }
+
     public void delete(Long id){
         questiosnRepository.deleteById(id);
     }

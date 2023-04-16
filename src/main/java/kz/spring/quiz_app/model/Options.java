@@ -25,4 +25,9 @@ public class Options {
     @ManyToOne
     @JoinColumn(name = "question_id", referencedColumnName = "questions_id")
     private Questions questions;
+
+    public Options(String optionText, Questions questions) {
+        this.optionText = optionText;
+        this.questions = questions;
+    }
 }
