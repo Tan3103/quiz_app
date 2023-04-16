@@ -39,4 +39,7 @@ public class SessionService {
     public List<Session> findByUserId(int id){
         return sessionRepository.findByUserId(id);
     }
+    public List<Session> getSessions(){
+        return sessionRepository.findAll();
+    }
 }

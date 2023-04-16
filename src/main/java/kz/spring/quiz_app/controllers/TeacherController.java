@@ -4,9 +4,11 @@ import jakarta.validation.Valid;
 import kz.spring.quiz_app.model.Options;
 import kz.spring.quiz_app.model.Questions;
 import kz.spring.quiz_app.model.Quiz;
+import kz.spring.quiz_app.model.Session;
 import kz.spring.quiz_app.services.OptionService;
 import kz.spring.quiz_app.services.QuestionService;
 import kz.spring.quiz_app.services.QuizService;
+import kz.spring.quiz_app.services.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class TeacherController {
 
     @Autowired
     private QuizService quizService;
+
+    @Autowired
+    private SessionService sessionService;
 
     @Autowired
     public TeacherController(QuestionService questionService, OptionService optionService) {
@@ -75,6 +80,7 @@ public class TeacherController {
                 optionService.addOption(options3);
                 optionService.addOption(options4);
                 break;
+
             }
             else{
 
@@ -96,19 +102,20 @@ public class TeacherController {
         }
         return "redirect:/";
     }
-
     @PatchMapping("/update/{id}")
     public String update(@ModelAttribute("question") @Valid Questions question, BindingResult bindingResult,
                          @PathVariable("id") Long id) {
-
-//        if (bindingResult.hasErrors())
-//            return "people/edit";
-
         for (Options option: question.getOptions()) {
             optionService.update(option.getOptionId(), option);
         }
 
         questionService.update(id, question);
         return "redirect:/";
+    }
+    @GetMapping("/result")
+    public String result(Model model){
+        List<Session> sessionList = sessionService.getSessions();
+        model.addAttribute("resultat", sessionList);
+        return "teacher/session-teacher";
     }
 }

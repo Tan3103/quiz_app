@@ -41,7 +41,6 @@ public class QuizController {
 
         return "student/questions";
     }
-
     @PostMapping(value = "/submit")
     public String postQuiz(Model model,@ModelAttribute Quiz quiz){
 
