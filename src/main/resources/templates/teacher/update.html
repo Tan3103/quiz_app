@@ -29,11 +29,6 @@
                 <option th:each="q, i: ${question.options}" th:value="${i.index+1}" th:text="${i.index+1}"></option>
             </select>
 
-            <label for="correct">Choose correct</label>
-            <select th:field="*{optionCorrect}" id="correct">
-                <option th:each="q, i: ${question.options}" th:value="${i.index+1}" th:text="${i.index+1}"></option>
-            </select>
-
             <input type="hidden" th:field="*{quiz.id}"/>
 
             <input type="submit" value="Update!"/>
