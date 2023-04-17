@@ -22,6 +22,11 @@ public class QuizService {
         return quiz.orElse(null);
     }
 
+    public Quiz getQuizBySubject(String subject){
+        Optional<Quiz> quiz = quizRepository.findBySubject(subject);
+        return quiz.orElse(null);
+    }
+
     public Quiz addQuiz(Quiz quiz){
         return quizRepository.save(quiz);
     }

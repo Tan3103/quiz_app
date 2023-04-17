@@ -63,43 +63,42 @@ public class TeacherController {
             @RequestParam(name = "name_options2") String option2,
             @RequestParam(name = "name_options3") String option3,
             @RequestParam(name = "name_options4") String option4,
-            @RequestParam(name = "correct_options") int correctOption
-                      ) {
-        List<Quiz> quizList = quizService.getAllQuiz();
-        for(Quiz quiz: quizList){
-            if (quiz.getSubject().equals(quiz_subject)){
-                Quiz quizById = quizService.getQuizById(quiz.getId());
-                Questions question = new Questions( title,-1, correctOption, quizById);
-                questionService.addQuestion(question);
-                Options options1 = new Options( option1, question);
-                Options options2 = new Options( option2, question);
-                Options options3 = new Options( option3, question);
-                Options options4 = new Options( option4, question);
-                optionService.addOption(options1);
-                optionService.addOption(options2);
-                optionService.addOption(options3);
-                optionService.addOption(options4);
-                break;
+            @RequestParam(name = "correct_options") int correctOption) {
 
-            }
-            else{
+        Quiz quiz = quizService.getQuizBySubject(quiz_subject);
 
-                Quiz quiz1 = new Quiz(null,quiz_subject);
-                System.out.println(quiz1);
-                quizService.addQuiz(quiz1);
-                Questions question = new Questions(title,-1, correctOption, quiz1);
-                questionService.addQuestion(question);
-                Options options1 = new Options( option1, question);
-                Options options2 = new Options( option2, question);
-                Options options3 = new Options( option3, question);
-                Options options4 = new Options( option4, question);
-                optionService.addOption(options1);
-                optionService.addOption(options2);
-                optionService.addOption(options3);
-                optionService.addOption(options4);
-                break;
-            }
+        if (quiz != null){
+            Questions question = new Questions( title,-1, correctOption, quiz);
+            questionService.addQuestion(question);
+
+            Options options1 = new Options( option1, question);
+            Options options2 = new Options( option2, question);
+            Options options3 = new Options( option3, question);
+            Options options4 = new Options( option4, question);
+
+            optionService.addOption(options1);
+            optionService.addOption(options2);
+            optionService.addOption(options3);
+            optionService.addOption(options4);
         }
+        else{
+            quiz = new Quiz(quiz_subject);
+            quizService.addQuiz(quiz);
+
+            Questions question = new Questions( title,-1, correctOption, quiz);
+            questionService.addQuestion(question);
+
+            Options options1 = new Options( option1, question);
+            Options options2 = new Options( option2, question);
+            Options options3 = new Options( option3, question);
+            Options options4 = new Options( option4, question);
+
+            optionService.addOption(options1);
+            optionService.addOption(options2);
+            optionService.addOption(options3);
+            optionService.addOption(options4);
+        }
+
         return "redirect:/";
     }
     @PatchMapping("/update/{id}")
