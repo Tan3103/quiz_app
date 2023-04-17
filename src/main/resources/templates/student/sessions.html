@@ -11,7 +11,8 @@
     <div class="container">
       <div class="row mt-5">
         <div class="col-8 offset-2">
-          <table class="table table-striped">
+          <h1 class="text-center my-3">My Sessions</h1>
+          <table class="table table-bordered">
             <thead>
             <tr>
               <th>Quiz Title</th>
@@ -23,7 +24,7 @@
             <tbody>
               <tr th:each="s: ${mySessions}">
                 <td th:text="${s.getQuiz().getSubject()}"></td>
-                <td th:text="${s.score}"></td>
+                <td th:text="${s.score} + '/' + ${s.getQuiz().getQuestionsList().size()}"></td>
                 <td th:text="${s.startAt}"></td>
                 <td th:text="${s.endAt}"></td>
               </tr>

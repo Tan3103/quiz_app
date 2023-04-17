@@ -10,19 +10,14 @@
         <div th:insert="student/navbarUser.html :: navbar"></div>
 
         <div class="container">
-                <h1 class="text-center lead mt-5">QUIZ</h1>
-            <div class="row mt-5 gy-5">
-                <div class="col-4 offset-4">
-                    <div th:each="quiz: ${allQuiz}">
-                        <div class="row gy-10">
-                            <div class="p-3 border bg-light">
-                                <DIV class="d-flex justify-content-center">
-                                    <h2 class="card-title lead" th:text="${quiz.subject}"></h2>
-                                </DIV>
-                                <DIV class="d-flex justify-content-center">
-                                    <a th:href="@{'/questions/' + ${quiz.id}}"  class="btn btn-primary" >Start</a>
-                                </DIV>
-                            </div>
+            <h1 class="text-center mt-5">QUIZ</h1>
+            <div class="row mt-5">
+                <div class="col-12 offset-0 d-flex justify-content-center flex-wrap">
+                    <div class="card mx-3 mb-3" th:each="quiz, i: ${allQuiz}" style="width: 16rem;">
+                        <div class="card-header" th:text="Quiz + ' '+ ${i.index + 1}"></div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title mb-5" th:text="${quiz.subject}"></h4>
+                            <a th:href="@{'/questions/' + ${quiz.id}}" class="btn btn-success" style="width: 14rem;">Start</a>
                         </div>
                     </div>
                 </div>
